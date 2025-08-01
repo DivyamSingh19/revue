@@ -4,7 +4,7 @@ import TeamCard from "@/components/teamcard";
 const Team = () => {
   return (
     <div className="  ">
-      <TeamCard />
+      <TeamCard/>
     </div>
   );
 };

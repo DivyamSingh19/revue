@@ -45,25 +45,25 @@ const TeamCard = () => {
 
   const getBackgroundClass = (index: any) => {
     if (hoveredIndex === null) {
-      return "bg-white/10"; // Default state
+      return "bg-white text-black"; // Default state
     }
     if (index === hoveredIndex) {
-      return "bg-white text-black"; // Currently hovered member - white bg
+      return "bg-blue-500 text-white"; // Currently hovered member - blue bg
     }
     if (index === hoveredIndex - 1) {
-      return "bg-blue-500"; // Previous member - blue bg
+      return "bg-white text-black"; // Previous member - white bg
     }
-    return "bg-white/10"; // All other members - default
+    return "bg-white text-black"; // All other members - default
   };
 
   const getTextColorClass = (index: any) => {
     if (hoveredIndex === null) {
-      return "text-white"; // Default state
+      return "text-black"; // Default state
     }
     if (index === hoveredIndex) {
-      return "text-black"; // Currently hovered member - black text
+      return "text-white"; // Currently hovered member - white text
     }
-    return "text-white"; // All other members - white text
+    return "text-black"; // All other members - black text
   };
 
   return (
@@ -81,11 +81,14 @@ const TeamCard = () => {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               <div
-                className={`relative px-6 py-5 text-left font-semibold text-lg border border-white/20 backdrop-blur-md shadow-lg transition-all duration-300 ${getBackgroundClass(
+                className={`relative px-6 py-5 border border-white/20 backdrop-blur-md shadow-lg transition-all duration-300 flex justify-between items-center ${getBackgroundClass(
                   index
                 )} ${getTextColorClass(index)}`}
               >
-                {member.name}
+                <span className="font-semibold text-lg">{member.name}</span>
+                <span className="text-sm font-normal opacity-0 group-hover:opacity-100 transition duration-300">
+                  {member.role}
+                </span>
                 {/* Shine effect */}
                 <span className="absolute top-0 left-0 w-full h-full -z-10 transition-all duration-500 ease-out group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent blur-sm"></span>
               </div>
