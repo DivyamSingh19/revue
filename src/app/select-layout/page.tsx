@@ -1,10 +1,13 @@
 import React from 'react'
-import LayoutCarousel from '@/components/layout/layoutcarousel'
+import LayoutSelector from '@/components/layout/layoutselector'
+import { LayoutProvider } from '@/lib/layoutcontext';
 
 const SelectLayout = () => {
   return (
     <div className="flex min-h-screen justify-center items-center">
-      <LayoutCarousel />
+      <LayoutProvider>
+        <LayoutSelector/>
+      </LayoutProvider>
     </div>
   );
 }

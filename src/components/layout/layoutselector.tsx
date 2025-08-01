@@ -13,14 +13,14 @@ import Image from "next/image";
 import { useLayout } from "@/lib/layoutcontext";
 
 const layouts = [
-  { name: "Minimal", id: "minimal", img: "/layouts/minimal.png" },
-  { name: "Classic", id: "classic", img: "/layouts/classic.png" },
-  { name: "Timeline", id: "timeline", img: "/layouts/timeline.png" },
-  { name: "Gallery", id: "gallery", img: "/layouts/gallery.png" },
+  { name: "Minimal", id: "minimal" },
+  { name: "Classic", id: "classic" },
+  { name: "Timeline", id: "timeline" },
+  { name: "Gallery", id: "gallery" },
 ] as const;
 
-export default function LayoutCarousel() {
-     const { layout, setLayout } = useLayout();
+export default function LayoutSelector() {
+  const { layout, setLayout } = useLayout();
 
   return (
     <div className="flex gap-4 overflow-x-auto p-4">
@@ -32,10 +32,9 @@ export default function LayoutCarousel() {
             layout === l.id ? "border-primary" : "border-muted"
           }`}
         >
-          <Image src={l.img} alt={l.name} width={200} height={120} />
           <div className="text-center py-2 font-semibold">{l.name}</div>
         </div>
       ))}
     </div>
-  )
+  );
 }
