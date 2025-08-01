@@ -1,12 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import AboutCard from "@/components/aboutcard";
 const About = () => {
   return (
     <div>
-        <h3>yaha pe text animation daalenge</h3>
-        
+      <AboutCard />
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;
