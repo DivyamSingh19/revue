@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import ThemePicker  from "@/components/portfolio/themepicker";
+
 const Portfolio = () => {
   return (
     <div className="flex gap-5 flex-col min-h-screen justify-center items-center">
@@ -11,7 +11,7 @@ const Portfolio = () => {
         <Button>Upload Resume</Button>
         <Button>Download Portfolio</Button>
       </div>
-      <ThemePicker/>
+     
     </div>
   );
 };
