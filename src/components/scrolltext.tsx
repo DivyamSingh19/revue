@@ -1,51 +1,54 @@
-"use client";
-import React from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-const stages = ["R", "RE", "REV", "REVU", "REVUE"];
+const STAGES = ["R", "RE", "REV", "REVU", "REVUE"];
 
-const ScrollText = () => {
-  const { scrollYProgress } = useScroll();
+export default function ScrollText() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
-  // Reveal each stage at equal scrollYProgress intervals
-  const thresholds = stages.map((_, i) => i / stages.length);
+  const [currentStage, setCurrentStage] = useState(0);
+  const [scrollDir, setScrollDir] = useState("down");
+  const lastScrollTop = useRef(0);
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (v) => {
+      const newDir = v > lastScrollTop.current ? "down" : "up";
+      setScrollDir(newDir);
+      lastScrollTop.current = v;
+
+      const stage = Math.floor(v * (STAGES.length - 1));
+      setCurrentStage(stage);
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress]);
+
+  const visibleStages =
+    scrollDir === "down"
+      ? [STAGES[currentStage]]
+      : STAGES.slice(0, currentStage + 1);
 
   return (
-    <div className="flex flex-col items-start space-y-2">
-      {stages.map((stage, index) => {
-        const start = thresholds[index];
-        const end = thresholds[index + 1] || 1;
-
-        const visibility = useTransform(scrollYProgress, [start, end], [0, 1]);
-
-        const y = useTransform(scrollYProgress, [start, end], [10, 0]);
-
-        const scale = useTransform(scrollYProgress, [start, end], [0.95, 1]);
-
-        return (
+    <div
+      ref={containerRef}
+      className="h-[300vh] bg-black text-white flex flex-col items-start justify-center px-10 font-bold text-[10vw] tracking-tight"
+    >
+      <div className="sticky top-[40vh] h-[20vh] flex flex-col justify-end">
+        {visibleStages.map((text, index) => (
           <motion.div
-            key={stage}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider origin-left"
-            style={{
-              opacity: visibility,
-              y,
-              scale,
-            }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            key={index}
+            className="leading-none"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            {stage.split("").map((letter, letterIndex) => (
-              <motion.span
-                key={`stage-${index}-${letterIndex}`}
-                className="inline-block bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
-              >
-                {letter}
-              </motion.span>
-            ))}
+            {text}
           </motion.div>
-        );
-      })}
+        ))}
+      </div>
     </div>
   );
-};
-
-export default ScrollText;
+}
