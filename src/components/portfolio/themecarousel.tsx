@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { themeChange } from "theme-change";
 import {
   Carousel,
   CarouselContent,
@@ -23,8 +22,9 @@ const themes = [
       accent: "#10b981",
       text: "#1e293b",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Bright & Clean",
+    description:
+      "Classic light theme for maximum readability and productivity.",
   },
   {
     name: "Dark",
@@ -49,8 +49,8 @@ const themes = [
       accent: "#eeaf3a",
       text: "#291334",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Sweet & Delightful",
+    description: "Soft pastels that bring joy to your workspace.",
   },
   {
     name: "Bumblebee",
@@ -62,8 +62,8 @@ const themes = [
       accent: "#84cc16",
       text: "#451a03",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Buzzing with Energy",
+    description: "Vibrant yellows and greens for an energetic workflow.",
   },
   {
     name: "Emerald",
@@ -75,8 +75,8 @@ const themes = [
       accent: "#3b82f6",
       text: "#064e3b",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Nature's Harmony",
+    description: "Fresh greens inspired by emerald gemstones and nature.",
   },
   {
     name: "Corporate",
@@ -88,8 +88,8 @@ const themes = [
       accent: "#06b6d4",
       text: "#1e293b",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Professional Excellence",
+    description: "Clean, business-ready design for professional environments.",
   },
   {
     name: "Synthwave",
@@ -101,8 +101,8 @@ const themes = [
       accent: "#f59e0b",
       text: "#fbbf24",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Retro Future Vibes",
+    description: "Neon colors straight from the 80s cyberpunk aesthetic.",
   },
   {
     name: "Retro",
@@ -114,8 +114,8 @@ const themes = [
       accent: "#10b981",
       text: "#7c2d12",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Vintage Nostalgia",
+    description: "Warm, nostalgic colors that feel timeless and comfortable.",
   },
   {
     name: "Cyberpunk",
@@ -127,8 +127,8 @@ const themes = [
       accent: "#00ffff",
       text: "#ffff00",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Digital Underground",
+    description: "Neon chaos perfect for futuristic hacking sessions.",
   },
   {
     name: "Valentine",
@@ -140,8 +140,8 @@ const themes = [
       accent: "#f97316",
       text: "#881337",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Love is in the Air",
+    description: "Romantic pinks and reds for a touch of sweetness.",
   },
   {
     name: "Halloween",
@@ -153,8 +153,8 @@ const themes = [
       accent: "#a855f7",
       text: "#fed7aa",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Spooky Season",
+    description: "Dark oranges and purples for mysterious night owls.",
   },
   {
     name: "Garden",
@@ -166,8 +166,8 @@ const themes = [
       accent: "#eab308",
       text: "#14532d",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Fresh Garden Breeze",
+    description: "Light greens that bring the outdoors to your screen.",
   },
   {
     name: "Forest",
@@ -179,8 +179,8 @@ const themes = [
       accent: "#eab308",
       text: "#bbf7d0",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Deep Woods Mystery",
+    description: "Dark forest greens for focused, immersive work sessions.",
   },
   {
     name: "Aqua",
@@ -192,8 +192,8 @@ const themes = [
       accent: "#8b5cf6",
       text: "#164e63",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Ocean Depths",
+    description: "Refreshing blues like crystal clear tropical waters.",
   },
   {
     name: "Lofi",
@@ -205,8 +205,8 @@ const themes = [
       accent: "#64748b",
       text: "#334155",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Chill Study Vibes",
+    description: "Muted tones perfect for focus and concentration.",
   },
   {
     name: "Pastel",
@@ -218,8 +218,8 @@ const themes = [
       accent: "#06b6d4",
       text: "#581c87",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Soft Dreams",
+    description: "Gentle pastels that are easy on the eyes.",
   },
   {
     name: "Fantasy",
@@ -231,8 +231,8 @@ const themes = [
       accent: "#ec4899",
       text: "#4c1d95",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Magical Realms",
+    description: "Mystical purples and pinks for creative adventures.",
   },
   {
     name: "Wireframe",
@@ -244,8 +244,8 @@ const themes = [
       accent: "#404040",
       text: "#000000",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Minimal Blueprint",
+    description: "Ultra-clean monochrome design for pure functionality.",
   },
   {
     name: "Black",
@@ -257,8 +257,8 @@ const themes = [
       accent: "#808080",
       text: "#ffffff",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Pure Darkness",
+    description: "Ultimate dark mode for maximum contrast and focus.",
   },
   {
     name: "Luxury",
@@ -270,8 +270,8 @@ const themes = [
       accent: "#f97316",
       text: "#fbbf24",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Golden Elegance",
+    description: "Rich golds and blacks for a premium experience.",
   },
   {
     name: "Dracula",
@@ -283,8 +283,8 @@ const themes = [
       accent: "#50fa7b",
       text: "#f8f8f2",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Vampire's Den",
+    description: "Classic Dracula theme loved by developers worldwide.",
   },
   {
     name: "CMYK",
@@ -296,8 +296,8 @@ const themes = [
       accent: "#ec4899",
       text: "#0f172a",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Print Perfect",
+    description: "Inspired by printing press colors - cyan, magenta, yellow.",
   },
   {
     name: "Autumn",
@@ -309,8 +309,8 @@ const themes = [
       accent: "#dc2626",
       text: "#92400e",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Fall Foliage",
+    description: "Warm autumn colors like golden leaves and harvest time.",
   },
   {
     name: "Business",
@@ -322,8 +322,8 @@ const themes = [
       accent: "#059669",
       text: "#1e293b",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Enterprise Ready",
+    description: "Professional blues and grays for business applications.",
   },
   {
     name: "Acid",
@@ -335,8 +335,8 @@ const themes = [
       accent: "#22c55e",
       text: "#581c87",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Electric Dreams",
+    description: "Bold, vibrant colors that pop off the screen.",
   },
   {
     name: "Lemonade",
@@ -348,8 +348,8 @@ const themes = [
       accent: "#eab308",
       text: "#14532d",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Summer Refresher",
+    description: "Bright and cheerful like a glass of fresh lemonade.",
   },
   {
     name: "Night",
@@ -361,8 +361,8 @@ const themes = [
       accent: "#10b981",
       text: "#f1f5f9",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Midnight Hour",
+    description: "Deep night blues perfect for late-night productivity.",
   },
   {
     name: "Coffee",
@@ -374,8 +374,8 @@ const themes = [
       accent: "#cd853f",
       text: "#3e2723",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Café Culture",
+    description: "Warm coffee browns for cozy workspace vibes.",
   },
   {
     name: "Winter",
@@ -387,8 +387,8 @@ const themes = [
       accent: "#06b6d4",
       text: "#334155",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Frosted Morning",
+    description: "Cool winter blues like fresh snow and clear skies.",
   },
   {
     name: "Dim",
@@ -400,8 +400,8 @@ const themes = [
       accent: "#f59e0b",
       text: "#e2e8f0",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Subtle Shadows",
+    description: "Dimmed colors that reduce eye strain during long sessions.",
   },
   {
     name: "Nord",
@@ -413,8 +413,8 @@ const themes = [
       accent: "#a3be8c",
       text: "#eceff4",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Arctic Minimalism",
+    description: "Clean Scandinavian design with icy blue accents.",
   },
   {
     name: "Sunset",
@@ -426,8 +426,8 @@ const themes = [
       accent: "#ed8936",
       text: "#fed7d7",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Golden Hour",
+    description: "Warm sunset colors that create a relaxing atmosphere.",
   },
   {
     name: "CaramelLatte",
@@ -439,8 +439,8 @@ const themes = [
       accent: "#cd853f",
       text: "#3e2723",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Creamy Indulgence",
+    description: "Rich caramel tones like your favorite coffee drink.",
   },
   {
     name: "Abyss",
@@ -452,8 +452,8 @@ const themes = [
       accent: "#ffd60a",
       text: "#caf0f8",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Ocean Depths",
+    description: "Deep sea blues with golden highlights like bioluminescence.",
   },
   {
     name: "Silk",
@@ -465,8 +465,8 @@ const themes = [
       accent: "#c2410c",
       text: "#831843",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Luxurious Comfort",
+    description: "Smooth, elegant pinks that feel sophisticated and refined.",
   },
   {
     name: "System",
@@ -478,8 +478,9 @@ const themes = [
       accent: "#10b981",
       text: "#374151",
     },
-    heading: "Embrace the Darkness",
-    description: "Perfect for late-night coding or sleek minimal vibes.",
+    heading: "Follow Your System",
+    description:
+      "Automatically adapts to your device's light or dark preference.",
   },
 ];
 
@@ -487,12 +488,12 @@ export default function ThemeCarousel() {
   const [selectedTheme, setSelectedTheme] = useState("system");
 
   useEffect(() => {
-    themeChange(false);
+    // Get stored theme from localStorage on component mount
     const stored = localStorage.getItem("theme");
     if (stored) setSelectedTheme(stored);
   }, []);
 
-  const handleThemeChange = (theme: string) => {
+  const handleThemeChange = (theme:string) => {
     setSelectedTheme(theme);
     if (theme === "system") {
       const prefersDark = window.matchMedia(
@@ -506,26 +507,31 @@ export default function ThemeCarousel() {
       localStorage.setItem("theme", theme);
     }
   };
+
   const selected = themes.find((t) => t.value === selectedTheme);
-  console.log(selected);
-  
+
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      {/* Header */}
+      {/* Dynamic Header that updates based on selected theme */}
       {selected && (
         <div className="text-center mb-8">
           <motion.h2
+            key={selected.heading} // This key ensures animation triggers on change
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-bold text-gray-800 mb-2"
+            transition={{ duration: 0.5 }}
+            className="text-3xl font-bold mb-2"
+            style={{ color: selected.colors.primary }}
           >
             {selected.heading}
           </motion.h2>
           <motion.p
+            key={selected.description} // This key ensures animation triggers on change
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-gray-600"
+            transition={{ delay: 0.1, duration: 0.5 }}
+            className="text-lg"
+            style={{ color: selected.colors.text }}
           >
             {selected.description}
           </motion.p>
@@ -719,18 +725,31 @@ export default function ThemeCarousel() {
         transition={{ delay: 0.3 }}
         className="mt-8 text-center"
       >
-        <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border border-gray-200">
+        <div
+          className="inline-flex items-center space-x-3 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg border-2"
+          style={{
+            backgroundColor: `${selected?.colors.bg}E6`, // Adding transparency
+            borderColor: selected?.colors.primary,
+            boxShadow: `0 10px 25px ${selected?.colors.primary}20`,
+          }}
+        >
           <div
-            className="w-4 h-4 rounded-full border-2 border-white shadow-sm"
+            className="w-4 h-4 rounded-full border-2 shadow-sm"
             style={{
-              backgroundColor: themes.find((t) => t.value === selectedTheme)
-                ?.colors.primary,
+              backgroundColor: selected?.colors.primary,
+              borderColor: selected?.colors.accent,
             }}
           ></div>
-          <span className="text-gray-700 font-medium">
+          <span
+            className="font-medium"
+            style={{ color: selected?.colors.text }}
+          >
             Currently using:{" "}
-            <span className="font-semibold">
-              {themes.find((t) => t.value === selectedTheme)?.name}
+            <span
+              className="font-semibold"
+              style={{ color: selected?.colors.primary }}
+            >
+              {selected?.name}
             </span>
           </span>
         </div>
