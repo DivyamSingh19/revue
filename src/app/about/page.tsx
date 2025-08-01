@@ -1,8 +1,10 @@
 import React from "react";
 import AboutCard from "@/components/aboutcard";
+import ScrollText from "@/components/scrolltext"
+
 const About = () => {
   return (
-    <div className="min-h-screen bg-black text-white px-4 ">
+    <div className=" bg-black text-white ">
       <AboutCard />
     </div>
   );
