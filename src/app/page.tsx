@@ -15,7 +15,7 @@ const page = () => {
   return (
     <div className="flex gap-5 flex-col min-h-screen justify-center items-center">
       <h3>yaha page transistion aur loader effect daalenge</h3>
-      <p>yaha voh layout and theme choose kareneka option denge</p>
+      <p>yaha build portfolio ka button dikha dete hai n dialog box dikke which consists of these two buttons</p>
       <div className="flex gap-5">
         <Button onClick={handleLayout} className="cursor-pointer">
           Select Layout
