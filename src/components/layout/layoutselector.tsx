@@ -28,7 +28,7 @@ export default function LayoutSelector() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 300 }}
-          onClick={() => handleSelect(l.id)} // ✅ Now using handler
+          onClick={() => handleSelect(l.id)} 
           className="min-w-[220px] cursor-pointer"
         >
           <Card

@@ -2,6 +2,9 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import MinimalLayout from "@/components/layout/minimal";
+import ClassicLayout from "@/components/layout/classic";
+import Timeline from "@/components/layout/timeline";
+import GalleryLayout from "@/components/layout/gallery";
 import { useLayout } from "@/lib/layoutcontext";
 
 // saare layouts issi page pe render honge 
@@ -31,8 +34,12 @@ const Portfolio = () => {
       switch (layout) {
         case "minimal":
           return <MinimalLayout projects={dummyProjects} />;
-        case "classic":
-        // Add other cases...
+        // case "classic":
+        //   return <ClassicLayout projects={dummyProjects} />;
+        // case "gallery":
+        //   return <GalleryLayout projects={dummyProjects} />;
+        // case "timeline":
+        //   return <TimelineLayout projects={dummyProjects} />;
         default:
           return <div>Please select a layout</div>;
       }
