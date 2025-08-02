@@ -67,7 +67,7 @@ const TeamCard = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-gradient-to-br from-indigo-400 to-purple-700 animate-[float_6s_ease-in-out_infinite] overflow-hidden">
+    <div className="flex items-center justify-center min-h-screen px-4 py-12 overflow-hidden">
       <div className="max-w-4xl w-full">
         <h1 className="text-4xl md:text-5xl font-bold text-white text-center mb-12 drop-shadow-lg">
           Our Amazing Team
