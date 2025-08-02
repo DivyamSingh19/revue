@@ -488,7 +488,7 @@ export default function ThemeCarousel() {
   const [selectedTheme, setSelectedTheme] = useState("system");
 
   useEffect(() => {
-     
+    // Get stored theme from localStorage on component mount
     const stored = localStorage.getItem("theme");
     if (stored) setSelectedTheme(stored);
   }, []);
