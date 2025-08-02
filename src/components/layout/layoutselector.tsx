@@ -1,16 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
 import { useLayout } from "@/lib/layoutcontext";
+import { useRouter } from "next/navigation";
 
 const layouts = [
   { name: "Minimal", id: "minimal" },
@@ -21,19 +13,35 @@ const layouts = [
 
 export default function LayoutSelector() {
   const { layout, setLayout } = useLayout();
+  const router = useRouter();
+
+  const handleSelect = (id: (typeof layouts)[number]["id"]) => {
+    setLayout(id);
+    router.push("/portfolio");
+  };
 
   return (
     <div className="flex gap-4 overflow-x-auto p-4">
       {layouts.map((l) => (
-        <div
+        <motion.div
           key={l.id}
-          onClick={() => setLayout(l.id)}
-          className={`cursor-pointer border-2 rounded-xl min-w-[200px] ${
-            layout === l.id ? "border-primary" : "border-muted"
-          }`}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300 }}
+          onClick={() => handleSelect(l.id)} // ✅ Now using handler
+          className="min-w-[220px] cursor-pointer"
         >
-          <div className="text-center py-2 font-semibold">{l.name}</div>
-        </div>
+          <Card
+            className={`rounded-xl border-2 ${
+              layout === l.id ? "border-primary shadow-lg" : "border-muted"
+            }`}
+          >
+            <CardContent className="flex flex-col items-center justify-center py-6">
+              <span className="text-lg font-semibold">{l.name}</span>
+              {/* Optional preview */}
+            </CardContent>
+          </Card>
+        </motion.div>
       ))}
     </div>
   );
